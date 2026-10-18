@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PaniersFermiers.Views.DetailPanierPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource PfFond}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- En-tête -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="12,40,20,8">
+            <Button Text="←" FontSize="24" Style="{StaticResource BoutonLien}"
+                    TextColor="{StaticResource PfTexte}" Command="{Binding RetourCommand}" />
+            <Label Grid.Column="1" Text="Détail Panier" FontSize="18" FontAttributes="Bold"
+                   TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,8,20,16">
+
+                <Border BackgroundColor="{StaticResource PfVertClair}" StrokeThickness="0"
+                        StrokeShape="RoundRectangle 16" HeightRequest="170">
+                    <Label Text="{Binding Emoji}" FontSize="80"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+
+                <Grid ColumnDefinitions="*,Auto" Margin="0,16,0,0">
+                    <Label Text="{Binding Nom}" FontSize="22" FontAttributes="Bold"
+                           TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
+                    <Label Grid.Column="1" Text="{Binding PrixTexte}" FontSize="20" FontAttributes="Bold"
+                           TextColor="{StaticResource PfVertFonce}" VerticalOptions="Center" />
+                </Grid>
+                <Label Text="{Binding PoidsTexte}" Style="{StaticResource SousTitre}" />
+
+                <Grid ColumnDefinitions="*,Auto" Margin="0,22,0,8">
+                    <Label Text="CONTENU DE LA RÉCOLTE" FontSize="12" FontAttributes="Bold"
+                           TextColor="{StaticResource PfTexteSecondaire}" />
+                    <Label Grid.Column="1" Text="{Binding NombreVarietes}" FontSize="13"
+                           TextColor="{StaticResource PfTexteSecondaire}" />
+                </Grid>
+
+                <Border Style="{StaticResource Carte}">
+                    <VerticalStackLayout Padding="14" Spacing="12"
+                                         BindableLayout.ItemsSource="{Binding Contenu}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <HorizontalStackLayout Spacing="12">
+                                    <Border BackgroundColor="{StaticResource PfFond}" StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 8" WidthRequest="38" HeightRequest="38">
+                                        <Label Text="{Binding Icone}" FontSize="20"
+                                               HorizontalOptions="Center" VerticalOptions="Center" />
+                                    </Border>
+                                    <Label Text="{Binding Libelle}" FontSize="16"
+                                           TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border BackgroundColor="#EAF3EA" StrokeThickness="0" StrokeShape="RoundRectangle 10"
+                        Padding="12,10" Margin="0,16,0,0">
+                    <Label Text="Paiement sur place lors du retrait (espèces ou Mobile Money)."
+                           FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" />
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bouton fixe en bas -->
+        <Button Grid.Row="2" Text="Réserver ce panier →" Style="{StaticResource BoutonPrincipal}"
+                Command="{Binding ReserverCommand}" Margin="20,8,20,24" />
+    </Grid>
+</ContentPage>

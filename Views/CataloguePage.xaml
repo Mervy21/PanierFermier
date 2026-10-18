@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PaniersFermiers.ViewModels"
+             x:Class="PaniersFermiers.Views.CataloguePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource PfFond}">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="20,40,20,0" RowSpacing="14">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+            <Label Text="Paniers de la semaine" Style="{StaticResource TitreEcran}" />
+            <Button Grid.Column="1" Text="Mes commandes" Style="{StaticResource BoutonLien}"
+            VerticalOptions="Start" Command="{Binding MesCommandesCommand}" />
+        </Grid>
+
+
+        <HorizontalStackLayout Grid.Row="1" Spacing="8">
+            <Button Text="{Binding TexteTous}" Style="{StaticResource Chip}"
+                    Command="{Binding FiltrerCommand}" CommandParameter="Tous">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding FiltreActif}" Value="Tous">
+                        <Setter Property="BackgroundColor" Value="{StaticResource PfVertFonce}" />
+                        <Setter Property="TextColor" Value="White" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Text="Légumes" Style="{StaticResource Chip}"
+                    Command="{Binding FiltrerCommand}" CommandParameter="Légumes">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding FiltreActif}" Value="Légumes">
+                        <Setter Property="BackgroundColor" Value="{StaticResource PfVertFonce}" />
+                        <Setter Property="TextColor" Value="White" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Text="Fruits" Style="{StaticResource Chip}"
+                    Command="{Binding FiltrerCommand}" CommandParameter="Fruits">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding FiltreActif}" Value="Fruits">
+                        <Setter Property="BackgroundColor" Value="{StaticResource PfVertFonce}" />
+                        <Setter Property="TextColor" Value="White" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Text="Mixte" Style="{StaticResource Chip}"
+                    Command="{Binding FiltrerCommand}" CommandParameter="Mixte">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding FiltreActif}" Value="Mixte">
+                        <Setter Property="BackgroundColor" Value="{StaticResource PfVertFonce}" />
+                        <Setter Property="TextColor" Value="White" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+        </HorizontalStackLayout>
+
+        <!-- Zone de contenu : chargement / erreur / liste -->
+        <Grid Grid.Row="2">
+
+            <ActivityIndicator IsRunning="{Binding EstChargement}"
+                               IsVisible="{Binding EstChargement}"
+                               Color="{StaticResource PfVertFonce}"
+                               VerticalOptions="Start" HorizontalOptions="Center"
+                               Margin="0,40,0,0" />
+
+            <VerticalStackLayout IsVisible="{Binding AErreur}" Spacing="12"
+                                 VerticalOptions="Start" Margin="0,40,0,0">
+                <Label Text="{Binding ErreurChargement}" Style="{StaticResource TexteErreur}"
+                       HorizontalOptions="Center" />
+                <Button Text="Réessayer" Style="{StaticResource BoutonPrincipal}"
+                        Command="{Binding ReessayerCommand}" />
+            </VerticalStackLayout>
+
+            <CollectionView ItemsSource="{Binding Paniers}" IsVisible="{Binding ListeVisible}">
+
+                <CollectionView.EmptyView>
+                    <Label Text="Aucun panier disponible pour le moment."
+                           Style="{StaticResource SousTitre}"
+                           HorizontalOptions="Center" Margin="0,40,0,0" />
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource Carte}" Margin="0,0,0,14">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:CatalogueViewModel}}, Path=OuvrirPanierCommand}"
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+
+                            <VerticalStackLayout>
+                                <Grid ColumnDefinitions="96,*" ColumnSpacing="14" Padding="14">
+                                    <Border BackgroundColor="{StaticResource PfVertClair}"
+                                            StrokeThickness="0" StrokeShape="RoundRectangle 12"
+                                            WidthRequest="96" HeightRequest="96">
+                                        <Label Text="{Binding Emoji}" FontSize="44"
+                                               HorizontalOptions="Center" VerticalOptions="Center" />
+                                    </Border>
+
+                                    <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                        <Label Text="{Binding Nom}" FontSize="18" FontAttributes="Bold"
+                                               TextColor="{StaticResource PfTexte}" />
+                                        <Label Text="{Binding Description}" FontSize="13"
+                                               TextColor="{StaticResource PfTexteSecondaire}"
+                                               MaxLines="2" LineBreakMode="TailTruncation" />
+                                        <HorizontalStackLayout Spacing="8">
+                                            <Label Text="{Binding PrixTexte}" FontSize="18"
+                                                   FontAttributes="Bold"
+                                                   TextColor="{StaticResource PfVertFonce}"
+                                                   VerticalOptions="Center" />
+                                            <Label Text="{Binding PoidsTexte}" FontSize="13"
+                                                   TextColor="{StaticResource PfTexteSecondaire}"
+                                                   VerticalOptions="Center" />
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                </Grid>
+
+                                <Grid ColumnDefinitions="*,Auto" BackgroundColor="#EAF3EA" Padding="14,10">
+                                    <Label Text="🤝 Partage équitable producteur" FontSize="12"
+                                           TextColor="{StaticResource PfTexteSecondaire}"
+                                           VerticalOptions="Center" />
+                                    <Label Grid.Column="1" Text="Voir le panier →" FontSize="14"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource PfVertFonce}" />
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+</ContentPage>
