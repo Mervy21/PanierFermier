@@ -5,8 +5,9 @@ namespace PaniersFermiers.Models
     public class Commande
     {
         public string Reference { get; set; } = "";      // "PF-8492"
-        public string NomPanier { get; set; } = "";
-        public int Quantite { get; set; }
+        public int NombreArticles { get; set; }
+        public double PoidsKg { get; set; }
+        public string ArticlesTexte { get; set; } = "";  // détail ligne par ligne
         public int Total { get; set; }
         public string LieuRetrait { get; set; } = "";
         public string JourRetrait { get; set; } = "";
@@ -26,7 +27,11 @@ namespace PaniersFermiers.Models
 
         public string ResumeTexte
         {
-            get { return Quantite + " × " + NomPanier; }
+            get
+            {
+                string mot = NombreArticles > 1 ? " produits" : " produit";
+                return NombreArticles + mot + " • " + Outils.Kg(PoidsKg);
+            }
         }
 
         public string StatutTexte

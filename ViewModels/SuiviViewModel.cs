@@ -65,6 +65,11 @@ namespace PaniersFermiers.ViewModels
                 return "📍 " + _commandeAffichee.LieuRetrait + "\n🕒 " + _commandeAffichee.JourRetrait + " • " + _commandeAffichee.CreneauRetrait;
             }
         }
+        public string ArticlesTexte
+        {
+            get { return _commandeAffichee == null ? "" : _commandeAffichee.ArticlesTexte; }
+        }
+
 
         // ----- Chronologie -----
         public bool Etape1Atteinte { get { return Etape >= 1; } }
@@ -138,6 +143,7 @@ namespace PaniersFermiers.ViewModels
             OnPropertyChanged(nameof(StatutTexte));
             OnPropertyChanged(nameof(ResumeTexte));
             OnPropertyChanged(nameof(RetraitTexte));
+            OnPropertyChanged(nameof(ArticlesTexte));
             OnPropertyChanged(nameof(Etape1Atteinte));
             OnPropertyChanged(nameof(Etape2Atteinte));
             OnPropertyChanged(nameof(Etape3Atteinte));

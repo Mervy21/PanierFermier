@@ -14,6 +14,8 @@ namespace PaniersFermiers
             Routing.RegisterRoute(nameof(RetraitPage), typeof(RetraitPage));
             Routing.RegisterRoute(nameof(PaiementPage), typeof(PaiementPage));
             Routing.RegisterRoute(nameof(SuiviPage), typeof(SuiviPage));
+            Routing.RegisterRoute(nameof(ProduitPage), typeof(ProduitPage));
+
         }
     }
 }

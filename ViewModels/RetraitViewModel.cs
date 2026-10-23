@@ -113,16 +113,11 @@ namespace PaniersFermiers.ViewModels
 
         public RetraitViewModel()
         {
-            Panier? panier = CommandeService.PanierChoisi;
-            NomPanierTexte = "";
-            DetailPanierTexte = "";
-            if (panier != null)
-            {
-                NomPanierTexte = panier.Nom;
-                int q = CommandeService.Quantite;
-                DetailPanierTexte = panier.PoidsTexte + " • " + q + (q > 1 ? " paniers" : " panier");
-            }
+            int n = CommandeService.NombreArticles;
+            NomPanierTexte = "Mon panier";
+            DetailPanierTexte = n + (n > 1 ? " produits" : " produit") + " • " + Outils.Kg(CommandeService.PoidsTotal);
             TotalTexte = Outils.Fcfa(CommandeService.Total);
+
 
             SelectionnerPointCommand = new Command<PointItem>(SelectionnerPoint);
             SelectionnerCreneauCommand = new Command<CreneauItem>(SelectionnerCreneau);

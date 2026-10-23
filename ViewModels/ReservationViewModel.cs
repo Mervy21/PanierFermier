@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using PaniersFermiers.Models;
 using PaniersFermiers.Services;
 using PaniersFermiers.Views;
@@ -7,113 +8,119 @@ namespace PaniersFermiers.ViewModels
 {
     public class ReservationViewModel : BaseViewModel
     {
-        private Panier _panier = new Panier();
-        private int _quantite = 1;
-        private bool _vide = false;
+        public ObservableCollection<LignePanier> Lignes { get; } = new ObservableCollection<LignePanier>();
 
-        public string Nom { get { return _panier.Nom; } }
-        public string Emoji { get { return _panier.Emoji; } }
-
-        public string PrixKgTexte
-        {
-            get
-            {
-                if (_panier.PoidsKg <= 0) return "";
-                int prixKg = (int)Math.Round(_panier.Prix / _panier.PoidsKg);
-                return Outils.Fcfa(prixKg) + "/kg";
-            }
-        }
-
-        public int Quantite
-        {
-            get { return _quantite; }
-            set
-            {
-                SetProperty(ref _quantite, value);
-                CommandeService.Quantite = value;
-                OnPropertyChanged(nameof(PeutDiminuer));
-                OnPropertyChanged(nameof(PeutAugmenter));
-                OnPropertyChanged(nameof(TotalTexte));
-                OnPropertyChanged(nameof(NombreArticlesTexte));
-            }
-        }
-
-        public bool PeutDiminuer { get { return _quantite > 1; } }
-        public bool PeutAugmenter { get { return _quantite < 10; } }
+        public bool PanierVide { get { return Lignes.Count == 0; } }
+        public bool ContenuVisible { get { return Lignes.Count > 0; } }
 
         public string TotalTexte
         {
-            get { return Outils.Fcfa(_panier.Prix * _quantite); }
+            get { return Outils.Fcfa(CommandeService.Total); }
         }
 
         public string NombreArticlesTexte
         {
-            get { return "Sous-total produits (" + _quantite + (_quantite > 1 ? " articles)" : " article)"); }
-        }
-
-        // État "panier vide" (après Supprimer)
-        public bool Vide
-        {
-            get { return _vide; }
-            set
+            get
             {
-                SetProperty(ref _vide, value);
-                OnPropertyChanged(nameof(ContenuVisible));
+                int n = Lignes.Count;
+                return "Sous-total (" + n + (n > 1 ? " produits)" : " produit)");
             }
         }
 
-        public bool ContenuVisible { get { return !_vide; } }
+        public string PoidsTexte
+        {
+            get { return "Poids total : " + Outils.Kg(CommandeService.PoidsTotal); }
+        }
+
+        // Règle du minimum de commande
+        public bool MinimumAtteint
+        {
+            get { return CommandeService.Total >= CommandeService.MontantMinimum; }
+        }
+
+        public bool MinimumNonAtteint
+        {
+            get { return !MinimumAtteint; }
+        }
+
+        public string MessageMinimum
+        {
+            get
+            {
+                int reste = CommandeService.MontantMinimum - CommandeService.Total;
+                return "Ajoutez encore " + Outils.Fcfa(reste) + " pour atteindre le minimum de commande ("
+                       + Outils.Fcfa(CommandeService.MontantMinimum) + ").";
+            }
+        }
 
         public ICommand AugmenterCommand { get; }
         public ICommand DiminuerCommand { get; }
         public ICommand SupprimerCommand { get; }
+        public ICommand ViderCommand { get; }
         public ICommand ChoisirPointCommand { get; }
-        public ICommand VoirPaniersCommand { get; }
 
         public ReservationViewModel()
         {
-            Panier? choisi = CommandeService.PanierChoisi;
-            if (choisi == null)
-            {
-                _vide = true;
-            }
-            else
-            {
-                _panier = choisi;
-                _quantite = CommandeService.Quantite;
-            }
-
-            AugmenterCommand = new Command(Augmenter);
-            DiminuerCommand = new Command(Diminuer);
-            SupprimerCommand = new Command(Supprimer);
+            AugmenterCommand = new Command<LignePanier>(Augmenter);
+            DiminuerCommand = new Command<LignePanier>(Diminuer);
+            SupprimerCommand = new Command<LignePanier>(Supprimer);
+            ViderCommand = new Command(Vider);
             ChoisirPointCommand = new Command(ChoisirPoint);
-            VoirPaniersCommand = new Command(VoirPaniers);
+            Recharger();
         }
 
-        private void Augmenter()
+        // Reconstruit la liste à partir du service puis prévient l'écran
+        private void Recharger()
         {
-            if (PeutAugmenter) Quantite = _quantite + 1;
+            Lignes.Clear();
+            foreach (LignePanier ligne in CommandeService.ObtenirLignes())
+            {
+                Lignes.Add(ligne);
+            }
+
+            OnPropertyChanged(nameof(PanierVide));
+            OnPropertyChanged(nameof(ContenuVisible));
+            OnPropertyChanged(nameof(TotalTexte));
+            OnPropertyChanged(nameof(NombreArticlesTexte));
+            OnPropertyChanged(nameof(PoidsTexte));
+            OnPropertyChanged(nameof(MinimumAtteint));
+            OnPropertyChanged(nameof(MinimumNonAtteint));
+            OnPropertyChanged(nameof(MessageMinimum));
         }
 
-        private void Diminuer()
+        private void Augmenter(LignePanier ligne)
         {
-            if (PeutDiminuer) Quantite = _quantite - 1;
+            CommandeService.ModifierQuantite(ligne, ligne.QuantiteKg + CommandeService.Pas);
+            Recharger();
         }
 
-        private void Supprimer()
+        private void Diminuer(LignePanier ligne)
         {
-            CommandeService.ViderBrouillon();
-            Vide = true;
+            CommandeService.ModifierQuantite(ligne, ligne.QuantiteKg - CommandeService.Pas);
+            Recharger();
+        }
+
+        private void Supprimer(LignePanier ligne)
+        {
+            CommandeService.RetirerLigne(ligne);
+            Recharger();
+        }
+
+        private async void Vider()
+        {
+            bool confirme = await Shell.Current.DisplayAlert("Vider le panier",
+                "Voulez-vous retirer tous les produits de votre panier ?", "Oui", "Non");
+            if (confirme)
+            {
+                CommandeService.ViderPanier();
+                Recharger();
+            }
         }
 
         private async void ChoisirPoint()
         {
+            if (!MinimumAtteint) return;
             await Shell.Current.GoToAsync(nameof(RetraitPage));
-        }
-
-        private async void VoirPaniers()
-        {
-            await Shell.Current.GoToAsync("//CataloguePage");
         }
     }
 }

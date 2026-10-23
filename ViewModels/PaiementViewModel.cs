@@ -78,8 +78,9 @@ namespace PaniersFermiers.ViewModels
             }
 
             TotalTexte = Outils.Fcfa(CommandeService.Total);
-            int q = CommandeService.Quantite;
-            NombrePaniersTexte = q + (q > 1 ? " paniers" : " panier");
+            int n = CommandeService.NombreArticles;
+            NombrePaniersTexte = n + (n > 1 ? " produits" : " produit") + " • " + Outils.Kg(CommandeService.PoidsTotal);
+
 
             ChoisirEspecesCommand = new Command(ChoisirEspeces);
             ChoisirMobileMoneyCommand = new Command(ChoisirMobileMoney);

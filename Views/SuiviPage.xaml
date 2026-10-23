@@ -151,6 +151,16 @@
                                    TextColor="{StaticResource PfTexteSecondaire}" />
                         </VerticalStackLayout>
                     </Border>
+                    <!-- Contenu de la commande -->
+                    <Border Style="{StaticResource Carte}">
+                        <VerticalStackLayout Padding="16" Spacing="8">
+                            <Label Text="🧺 Contenu de la commande" FontSize="15" FontAttributes="Bold"
+               TextColor="{StaticResource PfTexte}" />
+                            <Label Text="{Binding ArticlesTexte}" FontSize="13"
+               TextColor="{StaticResource PfTexteSecondaire}" />
+                        </VerticalStackLayout>
+                    </Border>
+
 
                     <!-- Actions -->
                     <Grid ColumnDefinitions="*,*" ColumnSpacing="12">

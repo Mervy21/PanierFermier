@@ -9,7 +9,7 @@ namespace PaniersFermiers.Services
         {
             new Utilisateur
             {
-                NomComplet = "Compte Démo",
+                NomComplet = "Client Démo",
                 Email = "demo@paniers.cm",
                 Telephone = "690000000",
                 MotDePasse = "12345678"
