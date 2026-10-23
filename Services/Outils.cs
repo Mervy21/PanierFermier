@@ -3,14 +3,18 @@ namespace PaniersFermiers.Services
 {
     public static class Outils
     {
+        private static readonly CultureInfo Fr = new CultureInfo("fr-FR");
+
         public static string Fcfa(int montant)
         {
-            return montant.ToString("N0", CultureInfo.InvariantCulture) + " FCFA";
+            return montant.ToString("N0", Fr).Replace('\u202F', ' ').Replace('\u00A0', ' ') + " FCFA";
         }
         public static string Kg(double poids)
         {
-            return poids.ToString(CultureInfo.InvariantCulture) + " kg";
+            if (poids < 1) return (poids * 1000).ToString("0", Fr) + " g";
+            return poids.ToString("0.#", Fr) + " kg";
         }
+
         public static bool EmailValide(string email)
         {
             if (email.Contains(" ")) return false;
@@ -39,5 +43,15 @@ namespace PaniersFermiers.Services
             }
             return true;
         }
+        public static string Operateur(string telephone)
+        {
+            string tel = NettoyerTelephone(telephone);
+            if (!TelephoneValide(tel)) return "";
+            int debut = int.Parse(tel.Substring(0, 3));
+            if ((debut >= 650 && debut <= 654) || (debut >= 670 && debut <= 689)) return "MTN Mobile Money";
+            if ((debut >= 655 && debut <= 659) || (debut >= 690 && debut <= 699)) return "Orange Money";
+            return "";
+        }
+
     }
 }

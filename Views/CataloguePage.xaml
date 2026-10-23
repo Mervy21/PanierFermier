@@ -81,7 +81,42 @@
                     </Button>
                 </HorizontalStackLayout>
             </ScrollView>
+
+            <HorizontalStackLayout Spacing="8">
+                <Label Text="Trier :" VerticalOptions="Center" FontSize="13"
+                       TextColor="{StaticResource PfTexteSecondaire}" />
+                <Button Text="A → Z" Style="{StaticResource Chip}"
+                        Command="{Binding TrierCommand}" CommandParameter="Nom">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Tri}" Value="Nom">
+                            <Setter Property="BackgroundColor" Value="{StaticResource PfVertFonce}" />
+                            <Setter Property="TextColor" Value="White" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="Prix ↑" Style="{StaticResource Chip}"
+                        Command="{Binding TrierCommand}" CommandParameter="PrixCroissant">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Tri}" Value="PrixCroissant">
+                            <Setter Property="BackgroundColor" Value="{StaticResource PfVertFonce}" />
+                            <Setter Property="TextColor" Value="White" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button Text="Prix ↓" Style="{StaticResource Chip}"
+                        Command="{Binding TrierCommand}" CommandParameter="PrixDecroissant">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding Tri}" Value="PrixDecroissant">
+                            <Setter Property="BackgroundColor" Value="{StaticResource PfVertFonce}" />
+                            <Setter Property="TextColor" Value="White" />
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+            </HorizontalStackLayout>
         </VerticalStackLayout>
+
+        <!-- ===== Chargement / erreur / liste ===== -->
+
 
         <!-- ===== Chargement / erreur / liste ===== -->
         <Grid Grid.Row="2" Padding="20,6,20,0">

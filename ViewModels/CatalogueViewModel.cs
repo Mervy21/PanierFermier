@@ -112,6 +112,14 @@ namespace PaniersFermiers.ViewModels
         public ICommand OuvrirPanierCommand { get; }
         public ICommand MesCommandesCommand { get; }
         public ICommand ReessayerCommand { get; }
+        public ICommand TrierCommand { get; }
+        private string _tri = "Nom";
+        public string Tri
+        {
+            get { return _tri; }
+            set { SetProperty(ref _tri, value); }
+        }
+
 
         public CatalogueViewModel()
         {
@@ -123,7 +131,9 @@ namespace PaniersFermiers.ViewModels
             OuvrirPanierCommand = new Command(OuvrirPanier);
             MesCommandesCommand = new Command(OuvrirMesCommandes);
             ReessayerCommand = new Command(Charger);
+            TrierCommand = new Command<string>(t => { Tri = t; AppliquerFiltre(); });
             Charger();
+
         }
 
         private async void Charger()
@@ -139,7 +149,9 @@ namespace PaniersFermiers.ViewModels
                     _tousLesProduits.Add(new ProduitItem(p));
                 }
                 TexteTous = "Tous (" + _tousLesProduits.Count + ")";
+                CommandeService.ChargerPanier();
                 AppliquerFiltre();
+
                 Actualiser();
             }
             catch (Exception)
@@ -172,17 +184,19 @@ namespace PaniersFermiers.ViewModels
             Produits.Clear();
             string recherche = _recherche.Trim().ToLower();
 
-            foreach (ProduitItem p in _tousLesProduits)
-            {
-                bool bonneCategorie = (FiltreActif == "Tous") || (p.Produit.Categorie == FiltreActif);
-                bool bonneRecherche = (recherche == "") || p.Produit.Nom.ToLower().Contains(recherche);
+            IEnumerable<ProduitItem> resultat = _tousLesProduits.Where(p =>
+                (FiltreActif == "Tous" || p.Produit.Categorie == FiltreActif) &&
+                (recherche == "" || p.Produit.Nom.ToLower().Contains(recherche)
+                                 || p.Produit.Origine.ToLower().Contains(recherche)));
 
-                if (bonneCategorie && bonneRecherche)
-                {
-                    Produits.Add(p);
-                }
-            }
+            IOrderedEnumerable<ProduitItem> trie = resultat.OrderBy(p => p.Produit.Disponible ? 0 : 1);
+            if (Tri == "PrixCroissant") trie = trie.ThenBy(p => p.Produit.PrixKg);
+            else if (Tri == "PrixDecroissant") trie = trie.ThenByDescending(p => p.Produit.PrixKg);
+            else trie = trie.ThenBy(p => p.Produit.Nom);
+
+            foreach (ProduitItem p in trie) Produits.Add(p);
         }
+
 
         private void Augmenter(ProduitItem item)
         {

@@ -1,4 +1,6 @@
 ﻿using PaniersFermiers.Models;
+using System.Globalization;
+using Microsoft.Maui.Storage;
 
 namespace PaniersFermiers.Services
 {
@@ -62,7 +64,6 @@ namespace PaniersFermiers.Services
 
         public static void AjouterProduit(Produit produit, double quantiteKg)
         {
-            // Si le produit est déjà dans le panier, on additionne les quantités
             foreach (LignePanier ligne in _lignes)
             {
                 if (ligne.Produit.Id == produit.Id)
@@ -72,6 +73,7 @@ namespace PaniersFermiers.Services
                 }
             }
             _lignes.Add(new LignePanier(produit, quantiteKg));
+            SauvegarderPanier();
         }
 
         public static void ModifierQuantite(LignePanier ligne, double nouvelleQuantite)
@@ -79,16 +81,19 @@ namespace PaniersFermiers.Services
             if (nouvelleQuantite < QuantiteMin) nouvelleQuantite = QuantiteMin;
             if (nouvelleQuantite > QuantiteMax) nouvelleQuantite = QuantiteMax;
             ligne.QuantiteKg = nouvelleQuantite;
+            SauvegarderPanier();
         }
 
         public static void RetirerLigne(LignePanier ligne)
         {
             _lignes.Remove(ligne);
+            SauvegarderPanier();
         }
 
         public static void ViderPanier()
         {
             _lignes.Clear();
+            SauvegarderPanier();
         }
 
         public static void ViderBrouillon()
@@ -97,6 +102,34 @@ namespace PaniersFermiers.Services
             PointChoisi = null;
             CreneauChoisi = null;
             ModePaiement = "";
+            SauvegarderPanier();
+        }
+
+        // ----- Sauvegarde du panier sur le téléphone -----
+        private const string ClePanier = "panier_v1";
+
+        public static void SauvegarderPanier()
+        {
+            List<string> morceaux = new List<string>();
+            foreach (LignePanier l in _lignes)
+                morceaux.Add(l.Produit.Id + ":" + l.QuantiteKg.ToString(CultureInfo.InvariantCulture));
+            Preferences.Default.Set(ClePanier, string.Join(";", morceaux));
+        }
+
+        public static void ChargerPanier()
+        {
+            _lignes.Clear();
+            string brut = Preferences.Default.Get(ClePanier, "");
+            if (brut == "") return;
+            foreach (string morceau in brut.Split(';'))
+            {
+                string[] p = morceau.Split(':');
+                if (p.Length != 2) continue;
+                if (!int.TryParse(p[0], out int id)) continue;
+                if (!double.TryParse(p[1], NumberStyles.Any, CultureInfo.InvariantCulture, out double kg)) continue;
+                Produit? produit = CatalogueService.ObtenirTous().FirstOrDefault(x => x.Id == id);
+                if (produit != null && produit.Disponible) _lignes.Add(new LignePanier(produit, kg));
+            }
         }
 
         // ----- Commandes -----

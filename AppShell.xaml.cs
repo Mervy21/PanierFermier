@@ -9,7 +9,6 @@ namespace PaniersFermiers
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
-            Routing.RegisterRoute(nameof(DetailPanierPage), typeof(DetailPanierPage));
             Routing.RegisterRoute(nameof(ReservationPage), typeof(ReservationPage));
             Routing.RegisterRoute(nameof(RetraitPage), typeof(RetraitPage));
             Routing.RegisterRoute(nameof(PaiementPage), typeof(PaiementPage));
