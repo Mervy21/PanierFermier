@@ -57,17 +57,25 @@ namespace PaniersFermiers.ViewModels
             }
         }
 
+<<<<<<< HEAD
         public string LieuRetraitTexte
         {
             get { return _commandeAffichee == null ? "" : _commandeAffichee.LieuRetrait; }
         }
 
         public string HoraireRetraitTexte
+=======
+        public string RetraitTexte
+>>>>>>> origin/main
         {
             get
             {
                 if (_commandeAffichee == null) return "";
+<<<<<<< HEAD
                 return _commandeAffichee.JourRetrait + " • " + _commandeAffichee.CreneauRetrait;
+=======
+                return "📍 " + _commandeAffichee.LieuRetrait + "\n🕒 " + _commandeAffichee.JourRetrait + " • " + _commandeAffichee.CreneauRetrait;
+>>>>>>> origin/main
             }
         }
         public string ArticlesTexte
@@ -84,11 +92,14 @@ namespace PaniersFermiers.ViewModels
         public string Sous2 { get { return SousTexte(2); } }
         public string Sous3 { get { return SousTexte(3); } }
         public bool PeutAvancer { get { return _commandeAffichee != null && Etape < 3; } }
+<<<<<<< HEAD
         public bool PeutAnnuler { get { return _commandeAffichee != null && _commandeAffichee.PeutEtreAnnulee; } }
         public string DateTexte
         {
             get { return _commandeAffichee == null ? "" : _commandeAffichee.JourRetrait; }
         }
+=======
+>>>>>>> origin/main
 
         private string SousTexte(int numero)
         {
@@ -102,7 +113,10 @@ namespace PaniersFermiers.ViewModels
         public ICommand CalendrierCommand { get; }
         public ICommand ContacterCommand { get; }
         public ICommand VoirPaniersCommand { get; }
+<<<<<<< HEAD
         public ICommand AnnulerCommand { get; }
+=======
+>>>>>>> origin/main
 
         public SuiviViewModel()
         {
@@ -111,7 +125,10 @@ namespace PaniersFermiers.ViewModels
             CalendrierCommand = new Command(AjouterAuCalendrier);
             ContacterCommand = new Command(Contacter);
             VoirPaniersCommand = new Command(VoirPaniers);
+<<<<<<< HEAD
             AnnulerCommand = new Command(Annuler);
+=======
+>>>>>>> origin/main
             Charger();
         }
 
@@ -154,8 +171,12 @@ namespace PaniersFermiers.ViewModels
             OnPropertyChanged(nameof(ReferenceAffichee));
             OnPropertyChanged(nameof(StatutTexte));
             OnPropertyChanged(nameof(ResumeTexte));
+<<<<<<< HEAD
             OnPropertyChanged(nameof(LieuRetraitTexte));
             OnPropertyChanged(nameof(HoraireRetraitTexte));
+=======
+            OnPropertyChanged(nameof(RetraitTexte));
+>>>>>>> origin/main
             OnPropertyChanged(nameof(ArticlesTexte));
             OnPropertyChanged(nameof(Etape1Atteinte));
             OnPropertyChanged(nameof(Etape2Atteinte));
@@ -164,8 +185,11 @@ namespace PaniersFermiers.ViewModels
             OnPropertyChanged(nameof(Sous2));
             OnPropertyChanged(nameof(Sous3));
             OnPropertyChanged(nameof(PeutAvancer));
+<<<<<<< HEAD
             OnPropertyChanged(nameof(PeutAnnuler));
             OnPropertyChanged(nameof(DateTexte));
+=======
+>>>>>>> origin/main
         }
 
         // DÉMO : simule l'avancement de la commande (le producteur récolte, puis dépose au relais)
@@ -175,11 +199,15 @@ namespace PaniersFermiers.ViewModels
             if (_commandeAffichee.Etape >= 3) return;
 
             _commandeAffichee.Etape = _commandeAffichee.Etape + 1;
+<<<<<<< HEAD
             CommandeService.MettreAJourCommande(_commandeAffichee);
+=======
+>>>>>>> origin/main
             RechargerListe();
             MettreAJourAffichage();
         }
 
+<<<<<<< HEAD
         // Annuler la commande affichée (avec confirmation)
         private async void Annuler()
         {
@@ -197,6 +225,8 @@ namespace PaniersFermiers.ViewModels
             }
         }
 
+=======
+>>>>>>> origin/main
         private async void AjouterAuCalendrier()
         {
             if (_commandeAffichee == null) return;

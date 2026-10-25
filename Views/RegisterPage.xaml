@@ -10,7 +10,11 @@
 
             <!-- En-tête avec retour -->
             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+<<<<<<< HEAD
                 <Button Text="{StaticResource IcRetour}" FontFamily="PfIcons" FontSize="24" SemanticProperties.Description="Retour" Style="{StaticResource BoutonLien}"
+=======
+                <Button Text="←" FontSize="24" Style="{StaticResource BoutonLien}"
+>>>>>>> origin/main
                         TextColor="{StaticResource PfTexte}"
                         Command="{Binding RetourCommand}" />
                 <Label Grid.Column="1" Text="Inscription" FontSize="18" FontAttributes="Bold"

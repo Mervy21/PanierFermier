@@ -14,7 +14,11 @@ namespace PaniersFermiers.ViewModels
         public string Categorie { get { return Produit.Categorie; } }
         public string Description { get { return Produit.Description; } }
         public string PrixKgTexte { get { return Produit.PrixKgTexte; } }
+<<<<<<< HEAD
         public string Origine { get { return Produit.Origine; } }
+=======
+        public string Origine { get { return "📍 " + Produit.Origine; } }
+>>>>>>> origin/main
         public bool Disponible { get { return Produit.Disponible; } }
         public bool Epuise { get { return !Produit.Disponible; } }
 
@@ -70,7 +74,11 @@ namespace PaniersFermiers.ViewModels
                 {
                     if (ligne.Produit.Id == Produit.Id)
                     {
+<<<<<<< HEAD
                         return ligne.QuantiteTexte + " dans votre panier";
+=======
+                        return "✓ " + ligne.QuantiteTexte + " dans votre panier";
+>>>>>>> origin/main
                     }
                 }
                 return "";

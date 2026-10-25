@@ -13,7 +13,10 @@ namespace PaniersFermiers
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+<<<<<<< HEAD
                     fonts.AddFont("PfIcons.ttf", "PfIcons");   // icônes de l'application
+=======
+>>>>>>> origin/main
                 });
 
 #if DEBUG

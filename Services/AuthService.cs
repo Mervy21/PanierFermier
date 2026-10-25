@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -25,18 +26,49 @@ namespace PaniersFermiers.Services
             return Convert.ToHexString(octets);
         }
 
+=======
+﻿using PaniersFermiers.Models;
+
+namespace PaniersFermiers.Services
+{
+    public static class AuthService
+    {
+        // Comptes en mémoire (simulation). Compte de démo : demo@paniers.cm / 12345678
+        private static List<Utilisateur> _comptes = new List<Utilisateur>
+        {
+            new Utilisateur
+            {
+                NomComplet = "Client Démo",
+                Email = "demo@paniers.cm",
+                Telephone = "690000000",
+                MotDePasse = "12345678"
+            }
+        };
+
+        public static Utilisateur? UtilisateurConnecte { get; private set; }
+
+>>>>>>> origin/main
         public static bool Connecter(string identifiant, string motDePasse)
         {
             string id = identifiant.Trim().ToLower();
             string tel = Outils.NettoyerTelephone(identifiant);
+<<<<<<< HEAD
             string empreinte = Hacher(motDePasse);
+=======
+>>>>>>> origin/main
 
             foreach (Utilisateur u in _comptes)
             {
                 bool memeIdentifiant = (u.Email.ToLower() == id) || (u.Telephone == tel);
+<<<<<<< HEAD
                 if (memeIdentifiant && u.MotDePasse == empreinte)
                 {
                     OuvrirSession(u);
+=======
+                if (memeIdentifiant && u.MotDePasse == motDePasse)
+                {
+                    UtilisateurConnecte = u;
+>>>>>>> origin/main
                     return true;
                 }
             }
@@ -62,6 +94,7 @@ namespace PaniersFermiers.Services
             return false;
         }
 
+<<<<<<< HEAD
         // Le RegisterViewModel envoie le mot de passe en clair : on le hache ici avant de l'enregistrer
         public static void Inscrire(Utilisateur utilisateur)
         {
@@ -70,11 +103,18 @@ namespace PaniersFermiers.Services
             _comptes.Add(utilisateur);
             SauvegarderComptes();
             OuvrirSession(utilisateur);
+=======
+        public static void Inscrire(Utilisateur utilisateur)
+        {
+            _comptes.Add(utilisateur);
+            UtilisateurConnecte = utilisateur;
+>>>>>>> origin/main
         }
 
         public static void Deconnecter()
         {
             UtilisateurConnecte = null;
+<<<<<<< HEAD
             Stockage.Supprimer(FichierSession);
         }
 
@@ -141,6 +181,8 @@ namespace PaniersFermiers.Services
         private static void SauvegarderComptes()
         {
             Stockage.Ecrire(FichierComptes, JsonSerializer.Serialize(_comptes));
+=======
+>>>>>>> origin/main
         }
     }
 }

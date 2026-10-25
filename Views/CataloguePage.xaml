@@ -12,13 +12,19 @@
         <Grid Grid.Row="0" Padding="20,44,20,22" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+<<<<<<< HEAD
                     <GradientStop Color="{StaticResource PfVertFonce}" Offset="0.0" />
                     <GradientStop Color="{StaticResource PfVert}" Offset="1.0" />
+=======
+                    <GradientStop Color="#18441F" Offset="0.0" />
+                    <GradientStop Color="#3A6B47" Offset="1.0" />
+>>>>>>> origin/main
                 </LinearGradientBrush>
             </Grid.Background>
 
             <Label Grid.Row="0" Grid.Column="0" Text="{Binding Salutation}"
                    FontSize="24" FontAttributes="Bold" TextColor="White" VerticalOptions="Center" />
+<<<<<<< HEAD
             <!-- AMÉLIORATION : deux raccourcis (commandes + profil) -->
             <HorizontalStackLayout Grid.Row="0" Grid.Column="1" Spacing="8">
                 <Button Text="Commandes" ContentLayout="Left,6"
@@ -37,6 +43,14 @@
             </HorizontalStackLayout>
             <Label Grid.Row="1" Grid.ColumnSpan="2" Margin="0,4,0,0"
                    Text="Des fruits et légumes frais, directement des producteurs du Cameroun"
+=======
+            <Button Grid.Row="0" Grid.Column="1" Text="📦 Mes commandes"
+                    BackgroundColor="#33FFFFFF" TextColor="White" FontSize="13"
+                    CornerRadius="18" HeightRequest="36" Padding="14,0"
+                    Command="{Binding MesCommandesCommand}" />
+            <Label Grid.Row="1" Grid.ColumnSpan="2" Margin="0,4,0,0"
+                   Text="Des fruits et légumes frais, directement des producteurs du Cameroun 🌱"
+>>>>>>> origin/main
                    FontSize="13" TextColor="#E3F1E5" />
         </Grid>
 
@@ -45,7 +59,11 @@
 
             <Border Style="{StaticResource ChampBorder}">
                 <Grid ColumnDefinitions="Auto,*" ColumnSpacing="6">
+<<<<<<< HEAD
                     <Label Text="{StaticResource IcRecherche}" FontFamily="PfIcons" FontSize="20" TextColor="{StaticResource PfTexteSecondaire}"
+=======
+                    <Label Text="🔍" FontSize="16" TextColor="{StaticResource PfTexteSecondaire}"
+>>>>>>> origin/main
                            VerticalOptions="Center" />
                     <Entry Grid.Column="1" Style="{StaticResource ChampEntry}"
                            Placeholder="Rechercher un fruit ou un légume..."
@@ -64,7 +82,11 @@
                             </DataTrigger>
                         </Button.Triggers>
                     </Button>
+<<<<<<< HEAD
                     <Button Text="Légumes" Style="{StaticResource Chip}"
+=======
+                    <Button Text="🥬 Légumes" Style="{StaticResource Chip}"
+>>>>>>> origin/main
                             Command="{Binding FiltrerCommand}" CommandParameter="Légumes">
                         <Button.Triggers>
                             <DataTrigger TargetType="Button" Binding="{Binding FiltreActif}" Value="Légumes">
@@ -73,7 +95,11 @@
                             </DataTrigger>
                         </Button.Triggers>
                     </Button>
+<<<<<<< HEAD
                     <Button Text="Fruits" Style="{StaticResource Chip}"
+=======
+                    <Button Text="🍍 Fruits" Style="{StaticResource Chip}"
+>>>>>>> origin/main
                             Command="{Binding FiltrerCommand}" CommandParameter="Fruits">
                         <Button.Triggers>
                             <DataTrigger TargetType="Button" Binding="{Binding FiltreActif}" Value="Fruits">
@@ -82,7 +108,11 @@
                             </DataTrigger>
                         </Button.Triggers>
                     </Button>
+<<<<<<< HEAD
                     <Button Text="Tubercules" Style="{StaticResource Chip}"
+=======
+                    <Button Text="🍠 Tubercules" Style="{StaticResource Chip}"
+>>>>>>> origin/main
                             Command="{Binding FiltrerCommand}" CommandParameter="Tubercules">
                         <Button.Triggers>
                             <DataTrigger TargetType="Button" Binding="{Binding FiltreActif}" Value="Tubercules">
@@ -94,11 +124,18 @@
                 </HorizontalStackLayout>
             </ScrollView>
 
+<<<<<<< HEAD
             <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
             <HorizontalStackLayout Spacing="8">
                 <Label Text="Trier :" VerticalOptions="Center" FontSize="13"
                        TextColor="{StaticResource PfTexteSecondaire}" />
                 <Button Text="Nom A-Z" Style="{StaticResource Chip}"
+=======
+            <HorizontalStackLayout Spacing="8">
+                <Label Text="Trier :" VerticalOptions="Center" FontSize="13"
+                       TextColor="{StaticResource PfTexteSecondaire}" />
+                <Button Text="A → Z" Style="{StaticResource Chip}"
+>>>>>>> origin/main
                         Command="{Binding TrierCommand}" CommandParameter="Nom">
                     <Button.Triggers>
                         <DataTrigger TargetType="Button" Binding="{Binding Tri}" Value="Nom">
@@ -107,7 +144,11 @@
                         </DataTrigger>
                     </Button.Triggers>
                 </Button>
+<<<<<<< HEAD
                 <Button Text="Prix croissant" Style="{StaticResource Chip}"
+=======
+                <Button Text="Prix ↑" Style="{StaticResource Chip}"
+>>>>>>> origin/main
                         Command="{Binding TrierCommand}" CommandParameter="PrixCroissant">
                     <Button.Triggers>
                         <DataTrigger TargetType="Button" Binding="{Binding Tri}" Value="PrixCroissant">
@@ -116,7 +157,11 @@
                         </DataTrigger>
                     </Button.Triggers>
                 </Button>
+<<<<<<< HEAD
                 <Button Text="Prix décroissant" Style="{StaticResource Chip}"
+=======
+                <Button Text="Prix ↓" Style="{StaticResource Chip}"
+>>>>>>> origin/main
                         Command="{Binding TrierCommand}" CommandParameter="PrixDecroissant">
                     <Button.Triggers>
                         <DataTrigger TargetType="Button" Binding="{Binding Tri}" Value="PrixDecroissant">
@@ -126,10 +171,19 @@
                     </Button.Triggers>
                 </Button>
             </HorizontalStackLayout>
+<<<<<<< HEAD
             </ScrollView>
         </VerticalStackLayout>
 
         <!-- ===== Chargement / erreur / liste ===== -->
+=======
+        </VerticalStackLayout>
+
+        <!-- ===== Chargement / erreur / liste ===== -->
+
+
+        <!-- ===== Chargement / erreur / liste ===== -->
+>>>>>>> origin/main
         <Grid Grid.Row="2" Padding="20,6,20,0">
 
             <ActivityIndicator IsRunning="{Binding EstChargement}" IsVisible="{Binding EstChargement}"
@@ -148,8 +202,12 @@
 
                 <CollectionView.EmptyView>
                     <VerticalStackLayout Margin="0,40,0,0" Spacing="8">
+<<<<<<< HEAD
                         <Label Text="{StaticResource IcAucunResultat}" FontFamily="PfIcons" FontSize="48"
                                TextColor="{StaticResource PfDesactive}" HorizontalOptions="Center" />
+=======
+                        <Label Text="🔎" FontSize="44" HorizontalOptions="Center" />
+>>>>>>> origin/main
                         <Label Text="Aucun produit ne correspond à votre recherche."
                                Style="{StaticResource SousTitre}"
                                HorizontalOptions="Center" HorizontalTextAlignment="Center" />
@@ -201,12 +259,17 @@
                                         <HorizontalStackLayout Spacing="10">
                                             <Label Text="{Binding PrixKgTexte}" FontSize="16" FontAttributes="Bold"
                                                    TextColor="{StaticResource PfVertFonce}" VerticalOptions="Center" />
+<<<<<<< HEAD
                                             <HorizontalStackLayout Spacing="2" VerticalOptions="Center">
                                                 <Label Text="{StaticResource IcOrigine}" Style="{StaticResource Icone}" FontSize="15"
                                                        TextColor="{StaticResource PfTexteSecondaire}" />
                                                 <Label Text="{Binding Origine}" FontSize="12"
                                                        TextColor="{StaticResource PfTexteSecondaire}" VerticalOptions="Center" />
                                             </HorizontalStackLayout>
+=======
+                                            <Label Text="{Binding Origine}" FontSize="12"
+                                                   TextColor="{StaticResource PfTexteSecondaire}" VerticalOptions="Center" />
+>>>>>>> origin/main
                                         </HorizontalStackLayout>
                                     </VerticalStackLayout>
                                 </Grid>
@@ -237,11 +300,16 @@
 
                                 <!-- Rappel : déjà dans le panier -->
                                 <Grid BackgroundColor="#EAF3EA" Padding="14,8" IsVisible="{Binding EstDansPanier}">
+<<<<<<< HEAD
                                     <HorizontalStackLayout Spacing="6">
                                         <Label Text="{StaticResource IcCheck}" Style="{StaticResource Icone}" FontSize="15" />
                                         <Label Text="{Binding DansPanierTexte}" FontSize="12" FontAttributes="Bold"
                                                TextColor="{StaticResource PfVertFonce}" VerticalOptions="Center" />
                                     </HorizontalStackLayout>
+=======
+                                    <Label Text="{Binding DansPanierTexte}" FontSize="12" FontAttributes="Bold"
+                                           TextColor="{StaticResource PfVertFonce}" />
+>>>>>>> origin/main
                                 </Grid>
 
                             </VerticalStackLayout>
@@ -260,11 +328,15 @@
             </Border.GestureRecognizers>
             <Grid ColumnDefinitions="*,Auto">
                 <VerticalStackLayout>
+<<<<<<< HEAD
                     <HorizontalStackLayout Spacing="8">
                         <Label Text="{StaticResource IcPanier}" Style="{StaticResource Icone}" FontSize="22" TextColor="White" />
                         <Label Text="Voir mon panier" FontSize="16" FontAttributes="Bold" TextColor="White"
                                VerticalOptions="Center" />
                     </HorizontalStackLayout>
+=======
+                    <Label Text="🧺 Voir mon panier" FontSize="16" FontAttributes="Bold" TextColor="White" />
+>>>>>>> origin/main
                     <Label Text="{Binding ResumePanierTexte}" FontSize="12" TextColor="#D5E8D8" />
                 </VerticalStackLayout>
                 <Label Grid.Column="1" Text="{Binding TotalPanierTexte}" FontSize="18"

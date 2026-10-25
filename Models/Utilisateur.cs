@@ -5,6 +5,7 @@
         public string NomComplet { get; set; } = "";
         public string Email { get; set; } = "";
         public string Telephone { get; set; } = "";
+<<<<<<< HEAD
         // Stocké sous forme d'empreinte SHA-256 (jamais en clair) : voir AuthService.Hacher
         public string MotDePasse { get; set; } = "";
 
@@ -18,5 +19,9 @@
                 return (mots[0].Substring(0, 1) + mots[mots.Length - 1].Substring(0, 1)).ToUpper();
             }
         }
+=======
+        // Simulation uniquement : en vrai, un mot de passe n'est jamais stocké en clair.
+        public string MotDePasse { get; set; } = "";
+>>>>>>> origin/main
     }
 }

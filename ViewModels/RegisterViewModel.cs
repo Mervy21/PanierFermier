@@ -50,7 +50,11 @@ namespace PaniersFermiers.ViewModels
 
         public string TexteBouton
         {
+<<<<<<< HEAD
             get { return _estChargement ? "Création en cours..." : "Créer mon compte"; }
+=======
+            get { return _estChargement ? "Création en cours..." : "Créer mon compte →"; }
+>>>>>>> origin/main
         }
 
         public ICommand CreerCompteCommand { get; }

@@ -11,7 +11,11 @@ namespace PaniersFermiers.ViewModels
         public string Nom { get { return Point.Nom; } }
         public string Detail { get { return Point.Detail; } }
         public string Icone { get { return Point.Icone; } }
+<<<<<<< HEAD
         public string JourHoraires { get { return Point.JourHoraires; } }
+=======
+        public string JourHoraires { get { return "📅 " + Point.JourHoraires; } }
+>>>>>>> origin/main
 
         public bool EstSelectionne
         {

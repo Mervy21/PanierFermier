@@ -18,15 +18,25 @@ namespace PaniersFermiers.ViewModels
         // Liste affichée à l'écran (change selon le filtre et la recherche)
         public ObservableCollection<ProduitItem> Produits { get; } = new ObservableCollection<ProduitItem>();
 
+<<<<<<< HEAD
         // "Bonjour Merveilles"
+=======
+        // "Bonjour Merveilles 👋"
+>>>>>>> origin/main
         public string Salutation
         {
             get
             {
                 Utilisateur? u = AuthService.UtilisateurConnecte;
+<<<<<<< HEAD
                 if (u == null || u.NomComplet.Trim() == "") return "Bonjour";
                 string[] mots = u.NomComplet.Trim().Split(' ');
                 return "Bonjour " + mots[0];
+=======
+                if (u == null || u.NomComplet.Trim() == "") return "Bonjour 👋";
+                string[] mots = u.NomComplet.Trim().Split(' ');
+                return "Bonjour " + mots[0] + " 👋";
+>>>>>>> origin/main
             }
         }
 
@@ -111,7 +121,10 @@ namespace PaniersFermiers.ViewModels
         public ICommand AjouterCommand { get; }
         public ICommand OuvrirPanierCommand { get; }
         public ICommand MesCommandesCommand { get; }
+<<<<<<< HEAD
         public ICommand ProfilCommand { get; }
+=======
+>>>>>>> origin/main
         public ICommand ReessayerCommand { get; }
         public ICommand TrierCommand { get; }
         private string _tri = "Nom";
@@ -131,7 +144,10 @@ namespace PaniersFermiers.ViewModels
             AjouterCommand = new Command<ProduitItem>(Ajouter);
             OuvrirPanierCommand = new Command(OuvrirPanier);
             MesCommandesCommand = new Command(OuvrirMesCommandes);
+<<<<<<< HEAD
             ProfilCommand = new Command(OuvrirProfil);
+=======
+>>>>>>> origin/main
             ReessayerCommand = new Command(Charger);
             TrierCommand = new Command<string>(t => { Tri = t; AppliquerFiltre(); });
             Charger();
@@ -173,7 +189,10 @@ namespace PaniersFermiers.ViewModels
             OnPropertyChanged(nameof(PanierNonVide));
             OnPropertyChanged(nameof(ResumePanierTexte));
             OnPropertyChanged(nameof(TotalPanierTexte));
+<<<<<<< HEAD
             OnPropertyChanged(nameof(Salutation));
+=======
+>>>>>>> origin/main
         }
 
         private void Filtrer(string categorie)
@@ -234,10 +253,13 @@ namespace PaniersFermiers.ViewModels
         {
             await Shell.Current.GoToAsync(nameof(SuiviPage));
         }
+<<<<<<< HEAD
 
         private async void OuvrirProfil()
         {
             await Shell.Current.GoToAsync(nameof(ProfilPage));
         }
+=======
+>>>>>>> origin/main
     }
 }

@@ -9,7 +9,11 @@
 
         <!-- En-tête -->
         <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="12,40,20,8">
+<<<<<<< HEAD
             <Button Text="{StaticResource IcRetour}" FontFamily="PfIcons" FontSize="24" SemanticProperties.Description="Retour" Style="{StaticResource BoutonLien}"
+=======
+            <Button Text="←" FontSize="24" Style="{StaticResource BoutonLien}"
+>>>>>>> origin/main
                     TextColor="{StaticResource PfTexte}" Command="{Binding RetourCommand}" />
             <Label Grid.Column="1" Text="Réservation Panier" FontSize="18" FontAttributes="Bold"
                    TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
@@ -34,10 +38,15 @@
                 <Grid ColumnDefinitions="*,Auto" Margin="0,20,0,10">
                     <Label Text="Choisir votre moyen sur place" FontSize="16" FontAttributes="Bold"
                            TextColor="{StaticResource PfTexte}" />
+<<<<<<< HEAD
                     <HorizontalStackLayout Spacing="8" Grid.Column="1">
                         <Label Text="{StaticResource IcPousse}" Style="{StaticResource Icone}" FontSize="15" TextColor="{StaticResource PfVert}" />
                         <Label Text="Direct producteur" FontSize="12" TextColor="{StaticResource PfVert}" VerticalOptions="Center" />
                     </HorizontalStackLayout>
+=======
+                    <Label Grid.Column="1" Text="● Direct producteur" FontSize="12"
+                           TextColor="{StaticResource PfVert}" VerticalOptions="Center" />
+>>>>>>> origin/main
                 </Grid>
 
                 <!-- Espèces -->
@@ -53,10 +62,15 @@
                     </Border.GestureRecognizers>
                     <Grid ColumnDefinitions="*,Auto" Padding="14">
                         <VerticalStackLayout Spacing="4">
+<<<<<<< HEAD
                             <HorizontalStackLayout Spacing="8">
                                 <Label Text="{StaticResource IcEspeces}" Style="{StaticResource Icone}" FontSize="20" TextColor="{StaticResource PfTexte}" />
                                 <Label Text="Espèces / Monnaie exacte" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
                             </HorizontalStackLayout>
+=======
+                            <Label Text="💵 Espèces / Monnaie exacte" FontSize="15" FontAttributes="Bold"
+                                   TextColor="{StaticResource PfTexte}" />
+>>>>>>> origin/main
                             <Label Text="Favorise le circuit direct sans frais bancaires ni intermédiaire."
                                    FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" />
                             <Label Text="Faites l'appoint si possible" FontSize="12"
@@ -82,6 +96,7 @@
                     </Border.GestureRecognizers>
                     <Grid ColumnDefinitions="*,Auto" Padding="14">
                         <VerticalStackLayout Spacing="4">
+<<<<<<< HEAD
                             <HorizontalStackLayout Spacing="8">
                                 <Label Text="{StaticResource IcMobileMoney}" Style="{StaticResource Icone}" FontSize="20" TextColor="{StaticResource PfTexte}" />
                                 <Label Text="Orange Money / Mobile Money" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
@@ -90,6 +105,14 @@
                                    FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" />
                         </VerticalStackLayout>
                         <Label Grid.Column="1" Text="{StaticResource IcCheck}" FontFamily="PfIcons" FontSize="22"
+=======
+                            <Label Text="📱 ORANGE MONEY / MOBILE MONEY" FontSize="15" FontAttributes="Bold"
+                                   TextColor="{StaticResource PfTexte}" />
+                            <Label Text="Paiement mobile effectué au comptoir de retrait."
+                                   FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" />
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="✓" FontSize="20" FontAttributes="Bold"
+>>>>>>> origin/main
                                TextColor="{StaticResource PfVertFonce}" IsVisible="{Binding MobileMoney}"
                                VerticalOptions="Start" />
                     </Grid>
@@ -98,10 +121,15 @@
                 <!-- Récapitulatif de retrait -->
                 <Border Style="{StaticResource Carte}" Margin="0,20,0,0">
                     <VerticalStackLayout Padding="16" Spacing="12">
+<<<<<<< HEAD
                         <HorizontalStackLayout Spacing="8">
                             <Label Text="{StaticResource IcRecu}" Style="{StaticResource Icone}" FontSize="20" TextColor="{StaticResource PfTexte}" />
                             <Label Text="Récapitulatif de retrait" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
                         </HorizontalStackLayout>
+=======
+                        <Label Text="🧾 Récapitulatif de retrait" FontSize="15" FontAttributes="Bold"
+                               TextColor="{StaticResource PfTexte}" />
+>>>>>>> origin/main
 
                         <VerticalStackLayout>
                             <Label Text="Lieu de retrait" FontSize="12" TextColor="{StaticResource PfTexteSecondaire}" />
@@ -133,12 +161,17 @@
 
                 <Border BackgroundColor="#EAF3EA" StrokeThickness="0" StrokeShape="RoundRectangle 10"
                         Padding="12,10" Margin="0,16,0,0">
+<<<<<<< HEAD
                     <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
                         <Label Text="{StaticResource IcFeuille}" Style="{StaticResource Icone}" FontSize="20"
                                VerticalOptions="Start" />
                         <Label Grid.Column="1" Text="Engagement zéro gaspillage : votre panier est composé de produits récoltés le matin même."
                                FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" />
                     </Grid>
+=======
+                    <Label Text="🍃 Engagement zéro gaspillage : votre panier est composé de produits récoltés le matin même."
+                           FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" />
+>>>>>>> origin/main
                 </Border>
 
                 <!-- Erreur d'enregistrement -->

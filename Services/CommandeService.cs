@@ -1,6 +1,10 @@
 ﻿using PaniersFermiers.Models;
 using System.Globalization;
+<<<<<<< HEAD
 using System.Text.Json;
+=======
+using Microsoft.Maui.Storage;
+>>>>>>> origin/main
 
 namespace PaniersFermiers.Services
 {
@@ -13,11 +17,16 @@ namespace PaniersFermiers.Services
         public const double QuantiteMax = 20;       // kg
         public const double Pas = 0.5;              // on avance de 0.5 kg en 0.5 kg
 
+<<<<<<< HEAD
         // Les commandes et le numéro suivant sont sauvegardés sur l'appareil
         private const string FichierCommandes = "commandes.json";
         private const string FichierNumero = "numero.txt";
         private static int _prochainNumero = ChargerNumero();
         private static List<Commande> _commandes = ChargerCommandes();
+=======
+        private static int _prochainNumero = 8492;
+        private static List<Commande> _commandes = new List<Commande>();
+>>>>>>> origin/main
         private static List<LignePanier> _lignes = new List<LignePanier>();
 
         // Produit affiché dans la fiche produit
@@ -147,15 +156,22 @@ namespace PaniersFermiers.Services
             string detail = "";
             foreach (LignePanier ligne in _lignes)
             {
+<<<<<<< HEAD
                 detail = detail + "• " + ligne.Nom + " — " + ligne.QuantiteTexte + " — " + ligne.TotalTexte + "\n";
+=======
+                detail = detail + ligne.Emoji + " " + ligne.Nom + " — " + ligne.QuantiteTexte + " — " + ligne.TotalTexte + "\n";
+>>>>>>> origin/main
             }
 
             Commande c = new Commande();
             c.Reference = "PF-" + _prochainNumero;
             _prochainNumero++;
+<<<<<<< HEAD
             Stockage.Ecrire(FichierNumero, _prochainNumero.ToString());
             c.EmailClient = AuthService.UtilisateurConnecte?.Email.ToLower() ?? "";
             c.DateCommande = DateTime.Now;
+=======
+>>>>>>> origin/main
             c.NombreArticles = _lignes.Count;
             c.PoidsKg = PoidsTotal;
             c.ArticlesTexte = detail.TrimEnd();
@@ -167,13 +183,17 @@ namespace PaniersFermiers.Services
             c.Etape = 1;
 
             _commandes.Insert(0, c);   // la plus récente en premier
+<<<<<<< HEAD
             SauvegarderCommandes();
+=======
+>>>>>>> origin/main
             ViderBrouillon();
             return c;
         }
 
         public static List<Commande> ObtenirCommandes()
         {
+<<<<<<< HEAD
             // Chaque client ne voit que ses propres commandes
             string email = AuthService.UtilisateurConnecte?.Email.ToLower() ?? "";
             List<Commande> resultat = new List<Commande>();
@@ -239,6 +259,9 @@ namespace PaniersFermiers.Services
             {
                 return new List<Commande>();
             }
+=======
+            return _commandes;
+>>>>>>> origin/main
         }
     }
 }

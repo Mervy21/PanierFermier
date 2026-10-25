@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ﻿using PaniersFermiers.Services;
 using PaniersFermiers.Views;
+=======
+﻿using PaniersFermiers.Views;
+>>>>>>> origin/main
 
 namespace PaniersFermiers
 {
@@ -15,6 +19,7 @@ namespace PaniersFermiers
             Routing.RegisterRoute(nameof(PaiementPage), typeof(PaiementPage));
             Routing.RegisterRoute(nameof(SuiviPage), typeof(SuiviPage));
             Routing.RegisterRoute(nameof(ProduitPage), typeof(ProduitPage));
+<<<<<<< HEAD
             Routing.RegisterRoute(nameof(ProfilPage), typeof(ProfilPage));
 
             // Quand l'écran est prêt : si le client était déjà connecté, on ouvre directement le catalogue
@@ -28,6 +33,9 @@ namespace PaniersFermiers
             {
                 await GoToAsync("//CataloguePage");
             }
+=======
+
+>>>>>>> origin/main
         }
     }
 }

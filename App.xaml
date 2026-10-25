@@ -23,6 +23,7 @@
             <Color x:Key="PfErreur">#C62828</Color>
             <Color x:Key="PfDesactive">#9DB3A0</Color>
 
+<<<<<<< HEAD
             <!-- ===== ICÔNES (police PfIcons) : un nom lisible par icône ===== -->
             <x:String x:Key="IcRetour">&#xE000;</x:String>
             <x:String x:Key="IcRecherche">&#xE001;</x:String>
@@ -54,6 +55,8 @@
             <x:String x:Key="IcDeconnexion">&#xE01B;</x:String>
             <x:String x:Key="IcChevron">&#xE01C;</x:String>
 
+=======
+>>>>>>> origin/main
             <!-- ===== TEXTES ===== -->
             <Style x:Key="TitreEcran" TargetType="Label">
                 <Setter Property="FontSize" Value="28" />
@@ -80,6 +83,7 @@
                 <Setter Property="Margin" Value="2,4,0,0" />
             </Style>
 
+<<<<<<< HEAD
             <!-- Icône (Label affichant un glyphe de la police PfIcons) -->
             <Style x:Key="Icone" TargetType="Label">
                 <Setter Property="FontFamily" Value="PfIcons" />
@@ -88,6 +92,8 @@
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
 
+=======
+>>>>>>> origin/main
             <!-- ===== CHAMPS ===== -->
             <Style x:Key="ChampBorder" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="White" />
@@ -122,12 +128,15 @@
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
+<<<<<<< HEAD
                             <VisualState x:Name="Pressed">
                                 <VisualState.Setters>
                                     <Setter Property="Opacity" Value="0.85" />
                                     <Setter Property="Scale" Value="0.97" />
                                 </VisualState.Setters>
                             </VisualState>
+=======
+>>>>>>> origin/main
                             <VisualState x:Name="Normal" />
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
@@ -154,11 +163,15 @@
                 <Setter Property="CornerRadius" Value="20" />
                 <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="Padding" Value="16,0" />
+<<<<<<< HEAD
                 <Setter Property="Shadow">
                     <Shadow Brush="Black" Offset="0,1" Radius="4" Opacity="0.10" />
                 </Setter>
             </Style>
 
+=======
+            </Style>
+>>>>>>> origin/main
             <Style x:Key="BoutonRond" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource PfVertClair}" />
                 <Setter Property="TextColor" Value="{StaticResource PfVertFonce}" />
@@ -168,10 +181,13 @@
                 <Setter Property="WidthRequest" Value="38" />
                 <Setter Property="HeightRequest" Value="38" />
                 <Setter Property="Padding" Value="0" />
+<<<<<<< HEAD
                 <Setter Property="Shadow">
                     <Shadow Brush="Black" Offset="0,2" Radius="6" Opacity="0.18" />
                 </Setter>
 
+=======
+>>>>>>> origin/main
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
@@ -195,6 +211,7 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="CornerRadius" Value="12" />
                 <Setter Property="HeightRequest" Value="48" />
+<<<<<<< HEAD
                 <Setter Property="Shadow">
                     <Shadow Brush="Black" Offset="0,2" Radius="8" Opacity="0.12" />
                 </Setter>
@@ -202,12 +219,19 @@
 
 
 
+=======
+            </Style>
+
+
+            <!-- ===== CARTE ===== -->
+>>>>>>> origin/main
             <Style x:Key="Carte" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="Stroke" Value="{StaticResource PfBordure}" />
                 <Setter Property="StrokeThickness" Value="1" />
                 <Setter Property="StrokeShape" Value="RoundRectangle 16" />
                 <Setter Property="Padding" Value="0" />
+<<<<<<< HEAD
                 <Setter Property="Shadow">
                     <Setter.Value>
                         <Shadow Brush="#18441F" Opacity="0.08" Radius="18" Offset="0,6" />
@@ -215,6 +239,9 @@
                 </Setter>
             </Style>
 
+=======
+            </Style>
+>>>>>>> origin/main
         </ResourceDictionary>
     </Application.Resources>
 </Application>

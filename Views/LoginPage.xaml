@@ -8,6 +8,7 @@
     <ScrollView>
         <VerticalStackLayout Padding="24,48,24,24" Spacing="0">
 
+<<<<<<< HEAD
             <HorizontalStackLayout Spacing="10">
                 <Border BackgroundColor="{StaticResource PfVertFonce}" StrokeThickness="0"
                         StrokeShape="RoundRectangle 10" WidthRequest="38" HeightRequest="38">
@@ -17,6 +18,10 @@
                 <Label Text="PaniersFermiers" FontSize="18" FontAttributes="Bold"
                        TextColor="{StaticResource PfVertFonce}" VerticalOptions="Center" />
             </HorizontalStackLayout>
+=======
+            <Label Text="🧺 PaniersFermiers" FontSize="18" FontAttributes="Bold"
+                   TextColor="{StaticResource PfVertFonce}" />
+>>>>>>> origin/main
 
             <Label Text="Connexion" Style="{StaticResource TitreEcran}" Margin="0,28,0,4" />
             <Label Text="Retrouvez vos paniers en direct des fermes locales"

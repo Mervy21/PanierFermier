@@ -10,7 +10,11 @@
 
         <!-- En-tête -->
         <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="12,40,20,8">
+<<<<<<< HEAD
             <Button Text="{StaticResource IcRetour}" FontFamily="PfIcons" FontSize="24" SemanticProperties.Description="Retour" Style="{StaticResource BoutonLien}"
+=======
+            <Button Text="←" FontSize="24" Style="{StaticResource BoutonLien}"
+>>>>>>> origin/main
                     TextColor="{StaticResource PfTexte}" Command="{Binding RetourCommand}" />
             <Label Grid.Column="1" Text="Mes commandes" FontSize="18" FontAttributes="Bold"
                    TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
@@ -25,8 +29,12 @@
 
                 <!-- État vide -->
                 <VerticalStackLayout IsVisible="{Binding AfficherVide}" Spacing="12" Margin="0,40,0,0">
+<<<<<<< HEAD
                     <Label Text="{StaticResource IcColis}" FontFamily="PfIcons" FontSize="64"
                            TextColor="{StaticResource PfDesactive}" HorizontalOptions="Center" />
+=======
+                    <Label Text="📦" FontSize="56" HorizontalOptions="Center" />
+>>>>>>> origin/main
                     <Label Text="Aucune commande pour le moment" Style="{StaticResource TitreEcran}"
                            FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
                     <Button Text="Voir les paniers" Style="{StaticResource BoutonPrincipal}"
@@ -44,7 +52,10 @@
                                        TextColor="{StaticResource PfTexteSecondaire}" />
                                 <Label Text="{Binding ReferenceAffichee}" FontSize="18" FontAttributes="Bold"
                                        TextColor="{StaticResource PfTexte}" />
+<<<<<<< HEAD
                                 <Label Text="{Binding DateTexte}" FontSize="12" TextColor="{StaticResource PfTexteSecondaire}" />
+=======
+>>>>>>> origin/main
                                 <Label Text="{Binding ResumeTexte}" FontSize="13"
                                        TextColor="{StaticResource PfTexteSecondaire}" />
                             </VerticalStackLayout>
@@ -75,7 +86,11 @@
                                             <Setter Property="BackgroundColor" Value="{StaticResource PfVert}" />
                                         </DataTrigger>
                                     </Border.Triggers>
+<<<<<<< HEAD
                                     <Label Text="{StaticResource IcCheck}" FontFamily="PfIcons" FontSize="16" TextColor="White"
+=======
+                                    <Label Text="✓" TextColor="White" FontAttributes="Bold"
+>>>>>>> origin/main
                                            HorizontalOptions="Center" VerticalOptions="Center"
                                            IsVisible="{Binding Etape1Atteinte}" />
                                 </Border>
@@ -99,7 +114,11 @@
                                             <Setter Property="BackgroundColor" Value="{StaticResource PfVert}" />
                                         </DataTrigger>
                                     </Border.Triggers>
+<<<<<<< HEAD
                                     <Label Text="{StaticResource IcCheck}" FontFamily="PfIcons" FontSize="16" TextColor="White"
+=======
+                                    <Label Text="✓" TextColor="White" FontAttributes="Bold"
+>>>>>>> origin/main
                                            HorizontalOptions="Center" VerticalOptions="Center"
                                            IsVisible="{Binding Etape2Atteinte}" />
                                 </Border>
@@ -123,7 +142,11 @@
                                             <Setter Property="BackgroundColor" Value="{StaticResource PfVert}" />
                                         </DataTrigger>
                                     </Border.Triggers>
+<<<<<<< HEAD
                                     <Label Text="{StaticResource IcCheck}" FontFamily="PfIcons" FontSize="16" TextColor="White"
+=======
+                                    <Label Text="✓" TextColor="White" FontAttributes="Bold"
+>>>>>>> origin/main
                                            HorizontalOptions="Center" VerticalOptions="Center"
                                            IsVisible="{Binding Etape3Atteinte}" />
                                 </Border>
@@ -149,6 +172,7 @@
                                 </VerticalStackLayout>
                             </Grid>
 
+<<<<<<< HEAD
                             <VerticalStackLayout Margin="0,18,0,0" Spacing="6">
                                 <HorizontalStackLayout Spacing="8">
                                     <Label Text="{StaticResource IcOrigine}" Style="{StaticResource Icone}" FontSize="18"
@@ -163,16 +187,25 @@
                                            TextColor="{StaticResource PfTexteSecondaire}" VerticalOptions="Center" />
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
+=======
+                            <Label Text="{Binding RetraitTexte}" FontSize="13" Margin="0,18,0,0"
+                                   TextColor="{StaticResource PfTexteSecondaire}" />
+>>>>>>> origin/main
                         </VerticalStackLayout>
                     </Border>
                     <!-- Contenu de la commande -->
                     <Border Style="{StaticResource Carte}">
                         <VerticalStackLayout Padding="16" Spacing="8">
+<<<<<<< HEAD
                             <HorizontalStackLayout Spacing="8">
                                 <Label Text="{StaticResource IcPanier}" Style="{StaticResource Icone}" FontSize="20" />
                                 <Label Text="Contenu de la commande" FontSize="15" FontAttributes="Bold"
                                        TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
                             </HorizontalStackLayout>
+=======
+                            <Label Text="🧺 Contenu de la commande" FontSize="15" FontAttributes="Bold"
+               TextColor="{StaticResource PfTexte}" />
+>>>>>>> origin/main
                             <Label Text="{Binding ArticlesTexte}" FontSize="13"
                TextColor="{StaticResource PfTexteSecondaire}" />
                         </VerticalStackLayout>
@@ -181,6 +214,7 @@
 
                     <!-- Actions -->
                     <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+<<<<<<< HEAD
                         <Button Text="Au calendrier" Style="{StaticResource Chip}" ContentLayout="Left,8"
                                 HeightRequest="48" CornerRadius="12" FontAttributes="Bold"
                                 TextColor="{StaticResource PfVertFonce}"
@@ -208,6 +242,17 @@
                         </Button.ImageSource>
                     </Button>
 
+=======
+                        <Button Text="📅 Au calendrier" Style="{StaticResource Chip}"
+                                HeightRequest="48" CornerRadius="12" FontAttributes="Bold"
+                                TextColor="{StaticResource PfVertFonce}"
+                                Command="{Binding CalendrierCommand}" />
+                        <Button Grid.Column="1" Text="📞 Contacter" Style="{StaticResource Chip}"
+                                HeightRequest="48" CornerRadius="12" FontAttributes="Bold"
+                                TextColor="{StaticResource PfVertFonce}"
+                                Command="{Binding ContacterCommand}" />
+                    </Grid>
+>>>>>>> origin/main
 
                     <!-- Bouton de démonstration -->
                     <Button Text="Simuler l'étape suivante (démo)" Style="{StaticResource BoutonLien}"
@@ -245,7 +290,10 @@
                                                    TextColor="{StaticResource PfTexteSecondaire}" />
                                         </VerticalStackLayout>
                                     </Grid>
+<<<<<<< HEAD
                                     
+=======
+>>>>>>> origin/main
                                 </Border>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
@@ -255,5 +303,8 @@
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
+<<<<<<< HEAD
     
+=======
+>>>>>>> origin/main
 </ContentPage>

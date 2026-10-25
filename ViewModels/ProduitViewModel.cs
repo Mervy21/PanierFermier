@@ -61,7 +61,11 @@ namespace PaniersFermiers.ViewModels
             Emoji = _produit.Emoji;
             Categorie = _produit.Categorie;
             PrixKgTexte = _produit.PrixKgTexte;
+<<<<<<< HEAD
             OrigineTexte = _produit.Origine;
+=======
+            OrigineTexte = "📍 " + _produit.Origine;
+>>>>>>> origin/main
             Description = _produit.Description;
             Disponible = _produit.Disponible;
 

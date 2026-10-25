@@ -9,7 +9,11 @@
 
         <!-- En-tête -->
         <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="12,40,20,8">
+<<<<<<< HEAD
             <Button Text="{StaticResource IcRetour}" FontFamily="PfIcons" FontSize="24" SemanticProperties.Description="Retour" Style="{StaticResource BoutonLien}"
+=======
+            <Button Text="←" FontSize="24" Style="{StaticResource BoutonLien}"
+>>>>>>> origin/main
                     TextColor="{StaticResource PfTexte}" Command="{Binding RetourCommand}" />
             <Label Grid.Column="1" Text="Fiche produit" FontSize="18" FontAttributes="Bold"
                    TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
@@ -47,6 +51,7 @@
                 <HorizontalStackLayout Spacing="8">
                     <Border BackgroundColor="{StaticResource PfGris}" StrokeThickness="0"
                             StrokeShape="RoundRectangle 14" Padding="10,5">
+<<<<<<< HEAD
                         <HorizontalStackLayout Spacing="5">
                             <Label Text="{StaticResource IcOrigine}" Style="{StaticResource Icone}" FontSize="15"
                                    TextColor="{StaticResource PfTexteSecondaire}" />
@@ -67,6 +72,20 @@
                             <Label Text="{StaticResource IcSoleil}" Style="{StaticResource Icone}" FontSize="15" TextColor="{StaticResource PfTexteSecondaire}" />
                             <Label Text="Frais du jour" FontSize="12" TextColor="{StaticResource PfTexteSecondaire}" VerticalOptions="Center" />
                         </HorizontalStackLayout>
+=======
+                        <Label Text="{Binding OrigineTexte}" FontSize="12"
+                               TextColor="{StaticResource PfTexteSecondaire}" />
+                    </Border>
+                    <Border BackgroundColor="{StaticResource PfGris}" StrokeThickness="0"
+                            StrokeShape="RoundRectangle 14" Padding="10,5">
+                        <Label Text="🌱 Produit local" FontSize="12"
+                               TextColor="{StaticResource PfTexteSecondaire}" />
+                    </Border>
+                    <Border BackgroundColor="{StaticResource PfGris}" StrokeThickness="0"
+                            StrokeShape="RoundRectangle 14" Padding="10,5">
+                        <Label Text="☀️ Frais du jour" FontSize="12"
+                               TextColor="{StaticResource PfTexteSecondaire}" />
+>>>>>>> origin/main
                     </Border>
                 </HorizontalStackLayout>
 
@@ -103,10 +122,15 @@
                     </Grid>
                 </Border>
 
+<<<<<<< HEAD
                 <HorizontalStackLayout Spacing="8">
                     <Label Text="{StaticResource IcCarte}" Style="{StaticResource Icone}" FontSize="17" TextColor="{StaticResource PfTexteSecondaire}" />
                     <Label Text="Paiement à la remise, au point de retrait." FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" VerticalOptions="Center" />
                 </HorizontalStackLayout>
+=======
+                <Label Text="💳 Paiement à la remise, au point de retrait."
+                       FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" />
+>>>>>>> origin/main
             </VerticalStackLayout>
         </ScrollView>
 

@@ -13,7 +13,11 @@ namespace PaniersFermiers.Services
                 Id = 1,
                 Nom = "Poste Centrale - Cathédrale",
                 Detail = "À 800 m • Centre-ville",
+<<<<<<< HEAD
                 Icone = Icones.Boutique,
+=======
+                Icone = "🏪",
+>>>>>>> origin/main
                 Jour = "Jeudi",
                 Horaires = "16h30 - 19h00",
                 Periode = "Jeudi après-midi",
@@ -30,7 +34,11 @@ namespace PaniersFermiers.Services
                 Id = 2,
                 Nom = "Ferme d'Etoudi - Vente directe",
                 Detail = "À 4.5 km • Parking gratuit",
+<<<<<<< HEAD
                 Icone = Icones.Tracteur,
+=======
+                Icone = "🚜",
+>>>>>>> origin/main
                 Jour = "Vendredi",
                 Horaires = "15h00 - 18h30",
                 Periode = "Vendredi après-midi",

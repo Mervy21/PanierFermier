@@ -21,7 +21,11 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
+<<<<<<< HEAD
 		<ApplicationTitle>Paniers Fermiers</ApplicationTitle>
+=======
+		<ApplicationTitle>PaniersFermiers</ApplicationTitle>
+>>>>>>> origin/main
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.paniersfermiers</ApplicationId>
@@ -43,10 +47,17 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
+<<<<<<< HEAD
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#18441F" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#18441F" BaseSize="128,128" />
+=======
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+>>>>>>> origin/main
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -65,12 +76,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+<<<<<<< HEAD
 	  <Compile Update="Views\ProfilPage.xaml.cs">
 	    <DependentUpon>ProfilPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+=======
+>>>>>>> origin/main
 	  <MauiXaml Update="Views\CataloguePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -83,9 +97,12 @@
 	  <MauiXaml Update="Views\ProduitPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+<<<<<<< HEAD
 	  <MauiXaml Update="Views\ProfilPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+=======
+>>>>>>> origin/main
 	  <MauiXaml Update="Views\RegisterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -5,8 +5,11 @@ namespace PaniersFermiers.Models
     public class Commande
     {
         public string Reference { get; set; } = "";      // "PF-8492"
+<<<<<<< HEAD
         public string EmailClient { get; set; } = "";
         public DateTime DateCommande { get; set; } = DateTime.Now;
+=======
+>>>>>>> origin/main
         public int NombreArticles { get; set; }
         public double PoidsKg { get; set; }
         public string ArticlesTexte { get; set; } = "";  // détail ligne par ligne
@@ -45,10 +48,13 @@ namespace PaniersFermiers.Models
                 return "Prête à être retirée";
             }
         }
+<<<<<<< HEAD
 
         public bool PeutEtreAnnulee
         {
             get { return Etape == 1; }
         }
+=======
+>>>>>>> origin/main
     }
 }

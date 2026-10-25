@@ -16,7 +16,11 @@ namespace PaniersFermiers.ViewModels
             get
             {
                 if (Modele.Complet) return "Complet";
+<<<<<<< HEAD
                 if (_estSelectionne) return "Choisi";
+=======
+                if (_estSelectionne) return "✓ Choisi";
+>>>>>>> origin/main
                 return "Disponible";
             }
         }
