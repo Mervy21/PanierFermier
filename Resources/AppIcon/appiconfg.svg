@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="456" height="456" viewBox="0 0 456 456">
+  <g transform="translate(228 232) scale(0.82) translate(-228 -215)">
+    <path d="M150 238 C150 128 306 128 306 238" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"/>
+    <path d="M104 238 H352 L322 352 Q318 372 298 372 H158 Q138 372 134 352 Z" fill="#FFFFFF"/>
+    <path d="M228 150 C186 112 198 62 252 46 C282 96 272 134 228 150 Z" fill="#B8F0C4"/>
+  </g>
+</svg>

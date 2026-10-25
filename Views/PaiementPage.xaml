@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PaniersFermiers.Views.PaiementPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource PfFond}">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- En-tête -->
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="12,40,20,8">
+            <Button Text="{StaticResource IcRetour}" FontFamily="PfIcons" FontSize="24" SemanticProperties.Description="Retour" Style="{StaticResource BoutonLien}"
+                    TextColor="{StaticResource PfTexte}" Command="{Binding RetourCommand}" />
+            <Label Grid.Column="1" Text="Réservation Panier" FontSize="18" FontAttributes="Bold"
+                   TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,8,20,24">
+
+                <Label Text="Modalité de règlement" Style="{StaticResource TitreEcran}" />
+                <Label Text="Paiement à la remise de votre panier" Style="{StaticResource SousTitre}"
+                       Margin="0,4,0,16" />
+
+                <Border BackgroundColor="#EAF3EA" StrokeThickness="0" StrokeShape="RoundRectangle 12" Padding="14">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Zéro débit anticipé" FontSize="14" FontAttributes="Bold"
+                               TextColor="{StaticResource PfVertFonce}" />
+                        <Label Text="Vous réglez directement le marché lors de la réception de vos produits frais, après vérification de votre panier."
+                               FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Grid ColumnDefinitions="*,Auto" Margin="0,20,0,10">
+                    <Label Text="Choisir votre moyen sur place" FontSize="16" FontAttributes="Bold"
+                           TextColor="{StaticResource PfTexte}" />
+                    <HorizontalStackLayout Spacing="8" Grid.Column="1">
+                        <Label Text="{StaticResource IcPousse}" Style="{StaticResource Icone}" FontSize="15" TextColor="{StaticResource PfVert}" />
+                        <Label Text="Direct producteur" FontSize="12" TextColor="{StaticResource PfVert}" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Grid>
+
+                <!-- Espèces -->
+                <Border Style="{StaticResource Carte}" Margin="0,0,0,10">
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border" Binding="{Binding Especes}" Value="True">
+                            <Setter Property="BackgroundColor" Value="{StaticResource PfVertClair}" />
+                            <Setter Property="Stroke" Value="{StaticResource PfVert}" />
+                        </DataTrigger>
+                    </Border.Triggers>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChoisirEspecesCommand}" />
+                    </Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="*,Auto" Padding="14">
+                        <VerticalStackLayout Spacing="4">
+                            <HorizontalStackLayout Spacing="8">
+                                <Label Text="{StaticResource IcEspeces}" Style="{StaticResource Icone}" FontSize="20" TextColor="{StaticResource PfTexte}" />
+                                <Label Text="Espèces / Monnaie exacte" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                            <Label Text="Favorise le circuit direct sans frais bancaires ni intermédiaire."
+                                   FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" />
+                            <Label Text="Faites l'appoint si possible" FontSize="12"
+                                   TextColor="{StaticResource PfVert}" />
+                        </VerticalStackLayout>
+                        <Border Grid.Column="1" BackgroundColor="{StaticResource PfVertFonce}" StrokeThickness="0"
+                                StrokeShape="RoundRectangle 10" Padding="8,3" VerticalOptions="Start">
+                            <Label Text="Recommandé" FontSize="11" TextColor="White" />
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- Mobile Money -->
+                <Border Style="{StaticResource Carte}">
+                    <Border.Triggers>
+                        <DataTrigger TargetType="Border" Binding="{Binding MobileMoney}" Value="True">
+                            <Setter Property="BackgroundColor" Value="{StaticResource PfVertClair}" />
+                            <Setter Property="Stroke" Value="{StaticResource PfVert}" />
+                        </DataTrigger>
+                    </Border.Triggers>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChoisirMobileMoneyCommand}" />
+                    </Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="*,Auto" Padding="14">
+                        <VerticalStackLayout Spacing="4">
+                            <HorizontalStackLayout Spacing="8">
+                                <Label Text="{StaticResource IcMobileMoney}" Style="{StaticResource Icone}" FontSize="20" TextColor="{StaticResource PfTexte}" />
+                                <Label Text="Orange Money / Mobile Money" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                            <Label Text="Paiement mobile effectué au comptoir de retrait."
+                                   FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" />
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="{StaticResource IcCheck}" FontFamily="PfIcons" FontSize="22"
+                               TextColor="{StaticResource PfVertFonce}" IsVisible="{Binding MobileMoney}"
+                               VerticalOptions="Start" />
+                    </Grid>
+                </Border>
+
+                <!-- Récapitulatif de retrait -->
+                <Border Style="{StaticResource Carte}" Margin="0,20,0,0">
+                    <VerticalStackLayout Padding="16" Spacing="12">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="{StaticResource IcRecu}" Style="{StaticResource Icone}" FontSize="20" TextColor="{StaticResource PfTexte}" />
+                            <Label Text="Récapitulatif de retrait" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource PfTexte}" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+
+                        <VerticalStackLayout>
+                            <Label Text="Lieu de retrait" FontSize="12" TextColor="{StaticResource PfTexteSecondaire}" />
+                            <Label Text="{Binding LieuTexte}" FontSize="15" FontAttributes="Bold"
+                                   TextColor="{StaticResource PfTexte}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout>
+                            <Label Text="Créneau réservé" FontSize="12" TextColor="{StaticResource PfTexteSecondaire}" />
+                            <Label Text="{Binding CreneauTexte}" FontSize="15" FontAttributes="Bold"
+                                   TextColor="{StaticResource PfTexte}" />
+                        </VerticalStackLayout>
+
+                        <BoxView HeightRequest="1" Color="{StaticResource PfBordure}" />
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <VerticalStackLayout>
+                                <Label Text="Total à régler au retrait" FontSize="13" FontAttributes="Bold"
+                                       TextColor="{StaticResource PfTexte}" />
+                                <Label Text="{Binding NombrePaniersTexte}" FontSize="12"
+                                       TextColor="{StaticResource PfTexteSecondaire}" />
+                            </VerticalStackLayout>
+                            <Label Grid.Column="1" Text="{Binding TotalTexte}" FontSize="20"
+                                   FontAttributes="Bold" TextColor="{StaticResource PfVertFonce}"
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border BackgroundColor="#EAF3EA" StrokeThickness="0" StrokeShape="RoundRectangle 10"
+                        Padding="12,10" Margin="0,16,0,0">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                        <Label Text="{StaticResource IcFeuille}" Style="{StaticResource Icone}" FontSize="20"
+                               VerticalOptions="Start" />
+                        <Label Grid.Column="1" Text="Engagement zéro gaspillage : votre panier est composé de produits récoltés le matin même."
+                               FontSize="13" TextColor="{StaticResource PfTexteSecondaire}" />
+                    </Grid>
+                </Border>
+
+                <!-- Erreur d'enregistrement -->
+                <Border Style="{StaticResource BandeauErreur}" IsVisible="{Binding AErreur}">
+                    <Label Text="{Binding MessageErreur}" Style="{StaticResource TexteErreur}" Margin="0" />
+                </Border>
+
+                <Button Text="{Binding TexteBouton}" Style="{StaticResource BoutonPrincipal}"
+                        Command="{Binding ConfirmerCommand}"
+                        IsEnabled="{Binding FormulaireActif}" Margin="0,20,0,0" />
+                <Label Text="Confirmation instantanée envoyée par SMS et e-mail." FontSize="12"
+                       TextColor="{StaticResource PfTexteSecondaire}"
+                       HorizontalOptions="Center" Margin="0,10,0,0" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
